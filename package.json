@@ -1,0 +1,11 @@
+{
+  "name": "factory-cool",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test frontend/src/test/simulation.test.js && cd backend && python3 -m unittest tests.test_simulator",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "cd backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "build": "npm --prefix frontend run build"
+  }
+}

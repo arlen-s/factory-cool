@@ -1,0 +1,68 @@
+{
+  "project": {
+    "name": "FactoryCool",
+    "repository": "https://github.com/arlen-s/factory-cool.git",
+    "phase": "qa",
+    "mvp": "high-fidelity digital twin dashboard"
+  },
+  "active_role": "QA",
+  "roles": {
+    "PM": {
+      "status": "completed",
+      "responsibilities": [
+        "整理 Idea",
+        "生成 Proposal",
+        "拆分需求和任务"
+      ]
+    },
+    "Frontend Developer": {
+      "status": "completed",
+      "responsibilities": [
+        "React 大屏",
+        "Three.js 数字孪生",
+        "ECharts 能耗图表"
+      ]
+    },
+    "Backend Developer": {
+      "status": "completed",
+      "responsibilities": [
+        "FastAPI 数据服务",
+        "WebSocket 实时推送",
+        "模拟算法"
+      ]
+    },
+    "QA": {
+      "status": "active",
+      "responsibilities": [
+        "功能验收",
+        "视觉还原检查",
+        "测试报告"
+      ]
+    },
+    "DevOps": {
+      "status": "completed",
+      "responsibilities": [
+        "Docker Compose",
+        "环境变量",
+        "CI/CD"
+      ]
+    }
+  },
+  "tasks": {
+    "todo": 0,
+    "in_progress": 0,
+    "review": 1,
+    "done": 9,
+    "blocked": 0
+  },
+  "artifacts": [
+    "docs/proposal.md",
+    "docs/requirements.md",
+    "docs/architecture.md",
+    "docs/deployment.md",
+    "tasks/backlog.md",
+    "reports/factorycool-screenshot.png",
+    "reports/qa-report.md",
+    "reports/release-report.md"
+  ]
+}
