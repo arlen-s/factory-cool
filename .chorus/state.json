@@ -2,10 +2,10 @@
   "project": {
     "name": "FactoryCool",
     "repository": "https://github.com/arlen-s/factory-cool.git",
-    "phase": "qa",
+    "phase": "done",
     "mvp": "high-fidelity digital twin dashboard"
   },
-  "active_role": "QA",
+  "active_role": "DevOps",
   "roles": {
     "PM": {
       "status": "completed",
@@ -32,7 +32,7 @@
       ]
     },
     "QA": {
-      "status": "active",
+      "status": "completed",
       "responsibilities": [
         "功能验收",
         "视觉还原检查",
@@ -51,8 +51,8 @@
   "tasks": {
     "todo": 0,
     "in_progress": 0,
-    "review": 1,
-    "done": 9,
+    "review": 0,
+    "done": 10,
     "blocked": 0
   },
   "artifacts": [

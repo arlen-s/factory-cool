@@ -1,12 +1,13 @@
 # Release Report
 
-Status: Local release candidate created.
+Status: Published to GitHub.
 
 ## Git
 
 - Branch: `main`
 - Latest commit: run `git log --oneline -1`
-- Origin: `https://github.com/arlen-s/factory-cool.git`
+- Origin: `ssh://git@ssh.github.com:443/arlen-s/factory-cool.git`
+- Remote branch: `origin/main`
 
 ## Verification
 
@@ -15,12 +16,8 @@ Status: Local release candidate created.
 - `docker compose config`: passed.
 - Backend health endpoint: passed.
 - Browser screenshot and interaction check: passed.
+- Remote push: passed.
 
 ## Remote Publish
 
-Remote push is blocked by local GitHub credentials/network configuration:
-
-- HTTPS push failed because Git could not read a GitHub username in this environment.
-- SSH fallback failed because the GitHub SSH connection was closed on port 22.
-
-The local repository is committed and ready to push once GitHub credentials are available.
+The first HTTPS push failed because GitHub credentials were unavailable in the shell. After SSH key verification, the repository remote was switched to GitHub SSH over port 443 and `main` was pushed successfully.
