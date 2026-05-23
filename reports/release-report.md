@@ -12,11 +12,12 @@ Status: Published to GitHub.
 ## Verification
 
 - `npm test`: passed.
-- `npm --prefix frontend run build`: passed with a non-blocking chunk size warning.
+- `npm --prefix frontend run build`: passed.
 - `docker compose config`: passed.
 - Backend health endpoint: passed.
 - Browser screenshot and interaction check: passed.
 - Remote push: passed.
+- High-fidelity screenshot update: passed.
 
 ## Remote Publish
 

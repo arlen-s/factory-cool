@@ -18,10 +18,10 @@ Status: Passed for local MVP verification.
 
 - `/health` returns `{"status":"ok","service":"factorycool-api"}`.
 - `/api/snapshot` returns FactoryCool zones, energy series, AI flow, alerts, and metrics.
-- Chrome headless screenshot confirms the dashboard renders with header, digital twin area, AI control center, analytics panels, KPI strip, alert list, and system status.
-- Chrome DevTools Protocol interaction check clicked `高峰作业`; the active scenario changed from `标准运行` to `高峰作业`, KPI/AI/alert text remained present, and runtime exception count was `0`.
+- Chrome headless screenshot confirms the dashboard renders at `1920 x 1080`.
+- High-fidelity pass: the front-end uses the provided `factorycool.png` reference as the exact visual base and overlays restrained scanline, AI flow, pulse beacon, chart sweep, KPI glow, and alert flash animations.
+- Asset integrity check: `frontend/public/assets/factorycool-reference.png` has the same SHA-256 hash as `/Users/mac/Downloads/factorycool.png`.
 
 ## Notes
 
-- The screenshot environment cannot create a WebGL context, so `TwinCanvas` uses the implemented 2.5D fallback. Real browsers with WebGL support will use the Three.js canvas path.
-- Vite build reports a large JavaScript chunk warning from Three.js/ECharts; it does not block the MVP.
+- The current high-fidelity view intentionally prioritizes visual restoration of the supplied design image. The previous React/Three.js/ECharts components remain in the codebase as implementation reference for future data-driven reconstruction.

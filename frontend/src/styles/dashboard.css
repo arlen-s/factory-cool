@@ -17,6 +17,302 @@ body {
   font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
 }
 
+.replica-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(14, 96, 163, 0.22), transparent 45%),
+    #020713;
+}
+
+.replica-stage {
+  position: relative;
+  width: min(100vw, 177.6833vh);
+  aspect-ratio: 1672 / 941;
+  overflow: hidden;
+  background: #020713;
+  box-shadow: 0 0 44px rgba(0, 191, 255, 0.18);
+  isolation: isolate;
+}
+
+.replica-reference {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  user-select: none;
+}
+
+.replica-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 31% 42%, transparent 0 22%, rgba(4, 15, 32, 0.06) 47%, rgba(0, 5, 16, 0.24) 100%),
+    linear-gradient(90deg, rgba(0, 231, 255, 0.07), transparent 18%, transparent 82%, rgba(0, 231, 255, 0.06));
+  mix-blend-mode: screen;
+}
+
+.replica-scanline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background: linear-gradient(180deg, transparent 0, rgba(102, 237, 255, 0.32) 50%, transparent 100%);
+  height: 14%;
+  transform: translateY(-120%);
+  animation: replicaScan 6.4s linear infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes replicaScan {
+  from { transform: translateY(-120%); }
+  to { transform: translateY(820%); }
+}
+
+.replica-top-glow {
+  position: absolute;
+  top: 0;
+  left: 24%;
+  width: 55%;
+  height: 12%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(88, 221, 255, 0.22), transparent 68%);
+  filter: blur(8px);
+  animation: topGlow 2.8s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes topGlow {
+  from { opacity: 0.22; }
+  to { opacity: 0.55; }
+}
+
+.replica-pulse {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 1.5%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.98) 0 12%, rgba(81, 223, 255, 0.86) 13% 32%, transparent 34%);
+  box-shadow: 0 0 16px rgba(46, 230, 255, 0.95);
+  transform: translate(-50%, -50%);
+  animation: pulseBeacon 1.9s ease-out infinite;
+  animation-delay: var(--delay);
+  mix-blend-mode: screen;
+}
+
+.replica-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -85%;
+  border: 1px solid rgba(71, 225, 255, 0.64);
+  border-radius: inherit;
+  animation: pulseRing 1.9s ease-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes pulseBeacon {
+  0%, 100% { opacity: 0.58; filter: brightness(1); }
+  45% { opacity: 1; filter: brightness(1.7); }
+}
+
+@keyframes pulseRing {
+  from { transform: scale(0.35); opacity: 0.95; }
+  to { transform: scale(1.5); opacity: 0; }
+}
+
+.replica-flow {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: 0.45%;
+  border-radius: 999px;
+  transform: translate(-50%, -50%) rotate(var(--r));
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(34, 235, 255, 0.05), rgba(82, 242, 255, 0.92), transparent);
+  box-shadow: 0 0 16px rgba(52, 229, 255, 0.78);
+  animation: flowStreak 1.8s ease-in-out infinite;
+  animation-delay: var(--delay);
+  mix-blend-mode: screen;
+}
+
+.replica-flow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.7vw;
+  height: 0.7vw;
+  border-top: 2px solid rgba(86, 241, 255, 0.95);
+  border-right: 2px solid rgba(86, 241, 255, 0.95);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+@keyframes flowStreak {
+  0%, 100% { opacity: 0.18; filter: blur(0.4px); }
+  50% { opacity: 0.95; filter: blur(0); }
+}
+
+.replica-sweep {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 8px;
+  mix-blend-mode: screen;
+}
+
+.replica-sweep::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -28%;
+  width: 24%;
+  height: 140%;
+  background: linear-gradient(90deg, transparent, rgba(121, 251, 255, 0.26), transparent);
+  transform: skewX(-22deg);
+  filter: blur(1px);
+  animation: chartSweep 3.4s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes chartSweep {
+  0% { left: -28%; opacity: 0; }
+  18% { opacity: 0.75; }
+  72% { opacity: 0.75; }
+  100% { left: 108%; opacity: 0; }
+}
+
+.replica-brain {
+  position: absolute;
+  left: 53.6%;
+  top: 48.5%;
+  width: 15%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.brain-orbit {
+  position: absolute;
+  inset: 15%;
+  border: 1px solid rgba(73, 229, 255, 0.54);
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(21, 206, 255, 0.44);
+}
+
+.orbit-one {
+  transform: rotateX(68deg) rotateZ(12deg);
+  animation: orbitSpin 5.2s linear infinite;
+}
+
+.orbit-two {
+  inset: 7%;
+  transform: rotateX(62deg) rotateZ(78deg);
+  animation: orbitSpin 7.4s linear infinite reverse;
+}
+
+.brain-core {
+  position: absolute;
+  inset: 39%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.96), rgba(25, 222, 255, 0.86) 42%, transparent 72%);
+  filter: blur(0.4px);
+  animation: brainCore 1.55s ease-in-out infinite alternate;
+}
+
+@keyframes orbitSpin {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@keyframes brainCore {
+  from { opacity: 0.5; transform: scale(0.86); }
+  to { opacity: 1; transform: scale(1.25); }
+}
+
+.replica-kpi-glow {
+  position: absolute;
+  left: 0.7%;
+  bottom: 4.8%;
+  width: 71.3%;
+  height: 15.2%;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 0 14%, rgba(67, 231, 255, 0.18) 15%, transparent 16% 28%, rgba(67, 231, 255, 0.16) 29%, transparent 30% 42%, rgba(67, 231, 255, 0.16) 43%, transparent 44% 56%, rgba(67, 231, 255, 0.16) 57%, transparent 58% 70%, rgba(67, 231, 255, 0.16) 71%, transparent 72%),
+    radial-gradient(circle at 7% 45%, rgba(82, 232, 255, 0.3), transparent 9%),
+    radial-gradient(circle at 24% 45%, rgba(94, 255, 137, 0.26), transparent 8%),
+    radial-gradient(circle at 41% 45%, rgba(84, 172, 255, 0.24), transparent 8%),
+    radial-gradient(circle at 58% 45%, rgba(164, 255, 98, 0.24), transparent 8%),
+    radial-gradient(circle at 75% 45%, rgba(255, 77, 77, 0.24), transparent 8%),
+    radial-gradient(circle at 92% 45%, rgba(82, 202, 255, 0.24), transparent 8%);
+  animation: kpiGlow 2.2s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes kpiGlow {
+  from { opacity: 0.24; }
+  to { opacity: 0.72; }
+}
+
+.replica-alert-flash {
+  position: absolute;
+  right: 1.3%;
+  bottom: 18.1%;
+  width: 25.5%;
+  height: 15.6%;
+  pointer-events: none;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 48, 36, 0.05), transparent 38%);
+  box-shadow: inset 0 0 28px rgba(255, 55, 43, 0.16);
+  animation: alertFlash 1.2s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes alertFlash {
+  from { opacity: 0.16; }
+  to { opacity: 0.72; }
+}
+
+.replica-data-rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.replica-data-rain span {
+  position: absolute;
+  top: -8%;
+  left: calc((var(--i) * 5.7% + 2%) - 0%);
+  width: 1px;
+  height: 8%;
+  background: linear-gradient(180deg, transparent, rgba(75, 224, 255, 0.5), transparent);
+  opacity: 0.32;
+  animation: dataRain 7s linear infinite;
+  animation-delay: calc(var(--i) * -0.38s);
+}
+
+@keyframes dataRain {
+  from { transform: translateY(-10%); }
+  to { transform: translateY(1350%); }
+}
+
 button {
   font: inherit;
 }
