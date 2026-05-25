@@ -1,5 +1,5 @@
-import { ReferenceDashboard } from './components/ReferenceDashboard.jsx';
+import { CodeDashboard } from './components/CodeDashboard.jsx';
 
 export default function App() {
-  return <ReferenceDashboard />;
+  return <CodeDashboard />;
 }
