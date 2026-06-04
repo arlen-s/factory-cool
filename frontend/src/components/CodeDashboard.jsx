@@ -62,6 +62,7 @@ function resolveIcon(name, fallback = Gauge) {
 function Panel({ title, action, className = '', children }) {
   return (
     <section className={`code-panel ${className}`}>
+      <span className="code-panel-corners" aria-hidden="true" />
       <div className="code-panel-title">
         <strong>{title}</strong>
         {action ? <span>{action}</span> : null}
@@ -120,6 +121,8 @@ function FactoryTwin({ zones }) {
         <img src="/assets/factory-twin-workshop.png" alt="数字孪生车间高质量底图" />
       </div>
       <span className="factory-map-glow" />
+      <span className="holo-vignette" />
+      <span className="twin-command-burst" />
       <svg className="factory-map-overlay" viewBox="0 0 820 760" role="img" aria-label="数字孪生车间运行态叠加层">
         <defs>
           <filter id="cyanGlow" x="-40%" y="-40%" width="180%" height="180%">
@@ -192,6 +195,7 @@ function FactoryTwin({ zones }) {
         <polyline className="pipe cold" points="118,540 304,472 500,496 728,360" />
         <polyline className="pipe data" points="304,156 412,318 542,350 670,548" />
         <polyline className="pipe-flow" points="112,555 275,493 482,504 699,374" />
+        <polyline className="control-wave" points="690,126 586,225 500,366 394,476 250,626" />
         <g className="cooling-pipe-network">
           <polyline points="94,310 192,294 315,330 452,292 620,330 722,302" />
           <polyline points="72,476 190,434 342,464 508,438 682,476" />
@@ -241,6 +245,18 @@ function AiCenter({ sensors, controls, fallbackControls, ai }) {
   return (
     <div className="ai-code">
       <div className="ai-code-title">AI智能控制中枢</div>
+      <svg className="decision-link-field" viewBox="0 0 620 535" aria-hidden="true">
+        <path className="decision-link sensing upper" d="M104 108 C184 118 226 173 301 249" />
+        <path className="decision-link sensing lower" d="M104 326 C178 314 222 280 300 260" />
+        <path className="decision-link control upper" d="M316 248 C392 172 438 118 516 108" />
+        <path className="decision-link control lower" d="M316 260 C394 282 442 314 516 326" />
+        <circle className="decision-packet packet-a" r="4" />
+        <circle className="decision-packet packet-b" r="4" />
+        <circle className="decision-packet packet-c" r="4" />
+        <circle className="decision-packet packet-d" r="4" />
+      </svg>
+      <span className="decision-label sensing">实时感知入模</span>
+      <span className="decision-label control">控制策略下发</span>
       <div className="ai-flow-node node-a" />
       <div className="ai-flow-node node-b" />
       <div className="ai-flow-node node-c" />
@@ -265,6 +281,8 @@ function AiCenter({ sensors, controls, fallbackControls, ai }) {
           </svg>
         </Panel>
         <div className="ai-brain">
+          <span className="quantum-sun" />
+          <span className="core-shockwave" />
           <span className="strategy-platform" />
           <span className="strategy-beam" />
           <span className="strategy-glass-dome" />
@@ -300,21 +318,23 @@ function AiCenter({ sensors, controls, fallbackControls, ai }) {
 function Analytics({ alerts, statusRings, metrics, ai }) {
   return (
     <div className="analytics-code">
+      <span className="analytics-scan-orbit" />
       <Panel title="能耗与运行分析" action={`实时总能耗 ${metrics.realtime_energy ?? 0} kWh`} className="energy-code-panel">
         <h3>实时能耗趋势（kWh）</h3>
+        <span className="chart-sweep" />
         <MiniLineChart />
         <div className="analytics-row">
           <div>
             <h3>冷却系统能效COP</h3>
             <div className="bar-code">
               {[3.21, 3.48, 3.67, 4.02, 4.28].map((value) => (
-                <span key={value} style={{ height: `${value * 19}px` }}><b>{value}</b></span>
+                <span key={value} style={{ height: `${value * 19}px` }}><i className="bar-spark" /><b>{value}</b></span>
               ))}
             </div>
           </div>
           <div>
             <h3>能耗构成占比</h3>
-            <div className="donut-code" />
+            <div className="donut-code"><span className="donut-radar" /></div>
             <ul className="donut-legend">
               <li><i />冷却系统 48%</li>
               <li><i />生产设备 32%</li>
@@ -324,6 +344,7 @@ function Analytics({ alerts, statusRings, metrics, ai }) {
           </div>
         </div>
         <div className="saving-code">
+          <span className="saving-flow" />
           <article><span>传统策略</span><strong>98,756</strong><em>65,585 元</em></article>
           <b>VS</b>
           <article><span>AI优化策略</span><strong>72,341</strong><em>{Math.max(0, 65585 - (metrics.saving_cost ?? 0)).toLocaleString()} 元</em></article>
@@ -332,7 +353,7 @@ function Analytics({ alerts, statusRings, metrics, ai }) {
       </Panel>
       <Panel title="告警与事件" action="查看全部 >" className="alerts-code-panel">
         {alerts.slice(0, 5).map((item) => (
-          <p className={item.level} key={`${item.message}-${item.time}`}><span>{item.message}</span><time>{item.time}</time></p>
+          <p className={item.level} key={`${item.message}-${item.time}`}><i className="alert-pulse" /><span>{item.message}</span><time>{item.time}</time></p>
         ))}
       </Panel>
       <Panel title="系统运行状态" action="更多 >" className="status-code-panel">
@@ -378,6 +399,23 @@ export function CodeDashboard() {
   return (
     <main className="code-shell">
       <section className="code-dashboard" aria-label="FactoryCool 代码还原大屏">
+        <div className="cosmic-grid" />
+        <div className="scanline-wash" />
+        <div className="data-rain" />
+        <div className="cinematic-beams" />
+        <div className="tactical-depth-lines" />
+        <aside className="command-spine left" aria-hidden="true">
+          <span>CORE</span>
+          <span>ENERGY</span>
+          <span>THERMAL</span>
+          <span>COOLING</span>
+        </aside>
+        <aside className="command-spine right" aria-hidden="true">
+          <span>AI OPS</span>
+          <span>TWIN</span>
+          <span>ALERT</span>
+          <span>SYNC</span>
+        </aside>
         <div className="hud-frame top-left" />
         <div className="hud-frame top-right" />
         <div className="hud-frame bottom-left" />
@@ -390,6 +428,12 @@ export function CodeDashboard() {
           </div>
           <div className="header-right">☁ 多云&nbsp;&nbsp;26°C&nbsp;&nbsp;湿度 65%&nbsp;&nbsp;|&nbsp;&nbsp;上海　工厂A区</div>
         </header>
+        <nav className="mission-strip" aria-label="运行态势">
+          <span>MISSION ACTIVE</span>
+          <span>THERMAL FIELD ONLINE</span>
+          <span>AI CONTROL LOOP {String(tick % 100).padStart(2, '0')}</span>
+          <span>ENERGY SAVING MODE</span>
+        </nav>
 
         <Panel title="数字孪生 · 车间全景" className="twin-code-panel">
           <div className="temperature-code"><span>温度(°C)</span><i /><b>18</b><b>22</b><b>26</b><b>30</b><b>34</b><b>38</b></div>
@@ -414,6 +458,7 @@ export function CodeDashboard() {
             const Icon = resolveIcon(iconName, Gauge);
             return (
             <article className={`kpi-code ${tone}`} key={label}>
+              <span className="kpi-energy-orbit" />
               <Icon size={60} />
               <div>
                 <span>{label}</span>

@@ -110,3 +110,88 @@ test('dashboard keeps animated utility overlays and neural core layers', () => {
     assert.match(styleSource, new RegExp(`\\.${token}`));
   });
 });
+
+test('dashboard includes upgraded sci-fi visual effect layers', () => {
+  const dashboardSource = readFileSync(resolve(root, 'src/components/CodeDashboard.jsx'), 'utf8');
+  const styleSource = readFileSync(resolve(root, 'src/styles/dashboard.css'), 'utf8');
+
+  [
+    'cosmic-grid',
+    'scanline-wash',
+    'holo-vignette',
+    'data-rain',
+    'code-panel-corners',
+    'kpi-energy-orbit'
+  ].forEach((token) => {
+    assert.match(dashboardSource, new RegExp(token));
+    assert.match(styleSource, new RegExp(`\\.${token}`));
+  });
+});
+
+test('dashboard stage fills the viewport without fixed side gutters', () => {
+  const styleSource = readFileSync(resolve(root, 'src/styles/dashboard.css'), 'utf8');
+
+  assert.match(styleSource, /\.code-dashboard\s*\{[^}]*width:\s*100vw/s);
+  assert.match(styleSource, /\.code-dashboard\s*\{[^}]*height:\s*100vh/s);
+  assert.doesNotMatch(styleSource, /\.code-dashboard\s*\{[^}]*aspect-ratio:\s*1672\s*\/\s*941/s);
+});
+
+test('dashboard includes bold command-room visual structure', () => {
+  const dashboardSource = readFileSync(resolve(root, 'src/components/CodeDashboard.jsx'), 'utf8');
+  const styleSource = readFileSync(resolve(root, 'src/styles/dashboard.css'), 'utf8');
+
+  [
+    'cinematic-beams',
+    'command-spine',
+    'mission-strip',
+    'quantum-sun',
+    'core-shockwave',
+    'tactical-depth-lines'
+  ].forEach((token) => {
+    assert.match(dashboardSource, new RegExp(token));
+    assert.match(styleSource, new RegExp(`\\.${token}`));
+  });
+});
+
+test('dashboard keeps atmospheric effects behind readable text layers', () => {
+  const styleSource = readFileSync(resolve(root, 'src/styles/dashboard.css'), 'utf8');
+
+  assert.match(styleSource, /\.code-dashboard\s*\{[^}]*-webkit-font-smoothing:\s*antialiased/s);
+  assert.match(styleSource, /\.scanline-wash\s*\{[^}]*z-index:\s*0/s);
+  assert.match(styleSource, /\.twin-code-panel\s*\{[^}]*z-index:\s*4/s);
+  assert.match(styleSource, /\.analytics-code\s*\{[^}]*z-index:\s*4/s);
+});
+
+test('dashboard animates AI decision chain from sensing to control', () => {
+  const dashboardSource = readFileSync(resolve(root, 'src/components/CodeDashboard.jsx'), 'utf8');
+  const styleSource = readFileSync(resolve(root, 'src/styles/dashboard.css'), 'utf8');
+
+  [
+    'decision-link-field',
+    'decision-link',
+    'decision-packet',
+    'decision-label',
+    'twin-command-burst',
+    'control-wave'
+  ].forEach((token) => {
+    assert.match(dashboardSource, new RegExp(token));
+    assert.match(styleSource, new RegExp(`\\.${token}`));
+  });
+});
+
+test('analytics column has dynamic visual treatment for charts and status', () => {
+  const dashboardSource = readFileSync(resolve(root, 'src/components/CodeDashboard.jsx'), 'utf8');
+  const styleSource = readFileSync(resolve(root, 'src/styles/dashboard.css'), 'utf8');
+
+  [
+    'analytics-scan-orbit',
+    'chart-sweep',
+    'bar-spark',
+    'donut-radar',
+    'saving-flow',
+    'alert-pulse'
+  ].forEach((token) => {
+    assert.match(dashboardSource, new RegExp(token));
+    assert.match(styleSource, new RegExp(`\\.${token}`));
+  });
+});
