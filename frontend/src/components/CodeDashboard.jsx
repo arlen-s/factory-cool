@@ -107,6 +107,14 @@ function MiniLineChart() {
         className="energy-path sub"
         d="M38 118 C60 111 73 84 97 82 S128 107 156 98 S191 70 223 75 S258 97 286 83 S323 56 358 65 S385 110 408 98 S418 107 420 96"
       />
+      <path
+        className="forecast-ghost-line"
+        d="M221 51 C250 42 278 45 306 37 S358 20 390 28 S414 42 420 38"
+      />
+      <g className="predictive-horizon" aria-hidden="true">
+        <path d="M220 28V120" />
+        <text x="230" y="37">AI FORECAST</text>
+      </g>
       {[96, 156, 221, 286, 358, 406, 420].map((x, index) => (
         <circle className="chart-point" cx={x} cy={[56, 82, 51, 60, 42, 80, 74][index]} r="3.2" key={x} />
       ))}
@@ -123,6 +131,8 @@ function FactoryTwin({ zones }) {
       <span className="factory-map-glow" />
       <span className="holo-vignette" />
       <span className="twin-command-burst" />
+      <span className="thermal-target-lock" aria-hidden="true" />
+      <span className="cooling-command-vector" aria-hidden="true" />
       <svg className="factory-map-overlay" viewBox="0 0 820 760" role="img" aria-label="数字孪生车间运行态叠加层">
         <defs>
           <filter id="cyanGlow" x="-40%" y="-40%" width="180%" height="180%">
@@ -245,6 +255,17 @@ function AiCenter({ sensors, controls, fallbackControls, ai }) {
   return (
     <div className="ai-code">
       <div className="ai-code-title">AI智能控制中枢</div>
+      <div className="ai-command-matrix" aria-hidden="true">
+        <span>MODEL SYNC</span>
+        <span>CONTROL LOOP</span>
+        <span>AUTONOMY 92%</span>
+      </div>
+      <span className="cognition-stream stream-a" aria-hidden="true" />
+      <span className="cognition-stream stream-b" aria-hidden="true" />
+      <div className="autonomy-gauge" aria-label="AI自主调控置信度">
+        <strong>92%</strong>
+        <span>自主调控置信度</span>
+      </div>
       <svg className="decision-link-field" viewBox="0 0 620 535" aria-hidden="true">
         <path className="decision-link sensing upper" d="M104 108 C184 118 226 173 301 249" />
         <path className="decision-link sensing lower" d="M104 326 C178 314 222 280 300 260" />
@@ -319,6 +340,11 @@ function Analytics({ alerts, statusRings, metrics, ai }) {
   return (
     <div className="analytics-code">
       <span className="analytics-scan-orbit" />
+      <div className="intelligence-ribbon" aria-hidden="true">
+        <span>AI PREDICTIVE ENGINE</span>
+        <span>THERMAL LOAD SIMULATION</span>
+        <span>COST IMPACT LIVE</span>
+      </div>
       <Panel title="能耗与运行分析" action={`实时总能耗 ${metrics.realtime_energy ?? 0} kWh`} className="energy-code-panel">
         <h3>实时能耗趋势（kWh）</h3>
         <span className="chart-sweep" />

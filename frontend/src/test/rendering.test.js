@@ -195,3 +195,28 @@ test('analytics column has dynamic visual treatment for charts and status', () =
     assert.match(styleSource, new RegExp(`\\.${token}`));
   });
 });
+
+test('dashboard emphasizes AI sci-fi command intelligence layers', () => {
+  const dashboardSource = readFileSync(resolve(root, 'src/components/CodeDashboard.jsx'), 'utf8');
+  const styleSource = readFileSync(resolve(root, 'src/styles/dashboard.css'), 'utf8');
+
+  [
+    'ai-command-matrix',
+    'cognition-stream',
+    'autonomy-gauge',
+    'thermal-target-lock',
+    'cooling-command-vector',
+    'predictive-horizon',
+    'intelligence-ribbon',
+    'forecast-ghost-line'
+  ].forEach((token) => {
+    assert.match(dashboardSource, new RegExp(token));
+    assert.match(styleSource, new RegExp(`\\.${token}`));
+  });
+});
+
+test('vite dev server allows public tunnel hostnames for demos', () => {
+  const viteConfigSource = readFileSync(resolve(root, 'vite.config.js'), 'utf8');
+
+  assert.match(viteConfigSource, /allowedHosts:\s*true/);
+});
