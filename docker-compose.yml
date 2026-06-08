@@ -11,8 +11,6 @@ services:
     build:
       context: ./frontend
     ports:
-      - "5173:5173"
-    environment:
-      - VITE_WS_URL=ws://localhost:8000/ws/dashboard
+      - "5173:80"
     depends_on:
       - backend
